@@ -1,0 +1,14 @@
+{
+    "name": "node-red-example",
+    "description": "Node-RED & SendGrid example project",
+    "version": "0.0.1",
+    "dependencies": {},
+    "node-red": {
+        "settings": {
+            "flowFile": "flows_example.json",
+            "credentialsFile": "flows_example_cred.json"
+        }
+    },
+    "author": "Wataru Sato",
+    "license": ""
+}

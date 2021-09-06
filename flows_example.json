@@ -1,0 +1,1119 @@
+[
+    {
+        "id": "6bfaf373.16399c",
+        "type": "tab",
+        "label": "フロー",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "ee04679c.10bbc8",
+        "type": "tab",
+        "label": "デバッグ",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "5d1cc0b04e07366a",
+        "type": "group",
+        "z": "6bfaf373.16399c",
+        "name": "サインアップURLアクセス〜登録フォーム表示",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "1b30d690a99b8177",
+            "0fb882fdf2148f2c",
+            "a2bb5d537c79b9f2",
+            "dcaa2b776efc10a5",
+            "edb60d84484b3671",
+            "c41f98f0f32a26dd",
+            "cb168663ec972ce6",
+            "0961f1f07333e72c",
+            "59c0e80468f8af74",
+            "fd2ad3a1304b4acf"
+        ],
+        "x": 134,
+        "y": 659,
+        "w": 1012,
+        "h": 202
+    },
+    {
+        "id": "5bcea05917cca0f6",
+        "type": "group",
+        "z": "6bfaf373.16399c",
+        "name": "登録フォームサブミット〜ユーザー情報登録",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "0a0f44f6db37a482",
+            "38932a79cf96481e",
+            "311aa6b81d02035b",
+            "6f63b91cda70586f",
+            "e394cdcc73ec3c99",
+            "59f0a69d09643cb4",
+            "ed710fcb40f71eaf",
+            "a6ccf81b47783af3",
+            "9b69cc91517745cd",
+            "3bd090c9a6ed1bc8",
+            "521bf61e140b42aa"
+        ],
+        "x": 134,
+        "y": 899,
+        "w": 1172,
+        "h": 202
+    },
+    {
+        "id": "6381d85f68f6d705",
+        "type": "group",
+        "z": "6bfaf373.16399c",
+        "name": "Inbound Parse Webhook受信〜自動メール返信",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "d8f6cc0d.20137",
+            "345d675f.3c81f8",
+            "2b5bb078.27eb",
+            "de6b3e8f.7c80c",
+            "38fb61ed.d4d1ae",
+            "207627fa4e918789",
+            "1cc367f1.3e3268",
+            "58a3b69c.b29a08",
+            "89d8c783.818e88",
+            "4c8e8cec.d27ac4",
+            "4d6544ff.37471c",
+            "9f044baff6db09ad",
+            "0f6527ed42f4a63d",
+            "6e25b7164710882c",
+            "9d3074bab66cb64a"
+        ],
+        "x": 134,
+        "y": 299,
+        "w": 1272,
+        "h": 322
+    },
+    {
+        "id": "a546a402.faa868",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "localhost",
+        "port": "3306",
+        "db": "world",
+        "tz": "Asia/Tokyo",
+        "charset": "UTF8"
+    },
+    {
+        "id": "4c8e8cec.d27ac4",
+        "type": "httpInMultipart",
+        "z": "6bfaf373.16399c",
+        "g": "6381d85f68f6d705",
+        "name": "",
+        "url": "/inbound",
+        "method": "post",
+        "fields": "[{\"name\": \"attachment-info\"}]",
+        "swaggerDoc": "",
+        "x": 420,
+        "y": 460,
+        "wires": [
+            [
+                "58a3b69c.b29a08"
+            ]
+        ]
+    },
+    {
+        "id": "89d8c783.818e88",
+        "type": "http response",
+        "z": "6bfaf373.16399c",
+        "g": "6381d85f68f6d705",
+        "name": "Inbound Parseに対するレスポンス",
+        "statusCode": "",
+        "headers": {},
+        "x": 940,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "1cc367f1.3e3268",
+        "type": "mysql",
+        "z": "6bfaf373.16399c",
+        "g": "6381d85f68f6d705",
+        "mydb": "a546a402.faa868",
+        "name": "",
+        "x": 755,
+        "y": 460,
+        "wires": [
+            [
+                "89d8c783.818e88",
+                "207627fa4e918789"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "d8f6cc0d.20137",
+        "type": "http request",
+        "z": "6bfaf373.16399c",
+        "g": "6381d85f68f6d705",
+        "name": "メール送信",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.sendgrid.com/v3/mail/send",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "bearer",
+        "x": 1310,
+        "y": 460,
+        "wires": [
+            [
+                "de6b3e8f.7c80c"
+            ]
+        ]
+    },
+    {
+        "id": "de6b3e8f.7c80c",
+        "type": "debug",
+        "z": "6bfaf373.16399c",
+        "g": "6381d85f68f6d705",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1290,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "38fb61ed.d4d1ae",
+        "type": "mysql",
+        "z": "6bfaf373.16399c",
+        "g": "6381d85f68f6d705",
+        "mydb": "a546a402.faa868",
+        "name": "",
+        "x": 995,
+        "y": 460,
+        "wires": [
+            [
+                "345d675f.3c81f8"
+            ]
+        ],
+        "outputLabels": [
+            "payload: [{\"from\": \"value\", \"uuid\": \"value}]"
+        ],
+        "l": false
+    },
+    {
+        "id": "58a3b69c.b29a08",
+        "type": "function",
+        "z": "6bfaf373.16399c",
+        "g": "6381d85f68f6d705",
+        "name": "insert inbound",
+        "func": "// fromからメールアドレス部分のみ抽出して利用\nlet from = msg.payload.from.match(/(?<=<).+@.+(?=>)/);\nif (from == null) {\n   from =  msg.payload.from.match(/.+@.+/);\n}\nmsg.payload = [from];\nmsg.topic = \"insert into inbound (`from`, `uuid`) values (?, UUID_TO_BIN(UUID()));\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 460,
+        "wires": [
+            [
+                "1cc367f1.3e3268"
+            ]
+        ]
+    },
+    {
+        "id": "4d6544ff.37471c",
+        "type": "inject",
+        "z": "6bfaf373.16399c",
+        "g": "6381d85f68f6d705",
+        "name": "From: \"Hoge Taro\" <hoge@example.com>",
+        "props": [
+            {
+                "p": "payload.from",
+                "v": "\"Hoge Taro\" <hoge@example.com>",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 340,
+        "y": 400,
+        "wires": [
+            [
+                "58a3b69c.b29a08"
+            ]
+        ]
+    },
+    {
+        "id": "2b5bb078.27eb",
+        "type": "debug",
+        "z": "6bfaf373.16399c",
+        "g": "6381d85f68f6d705",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1290,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "345d675f.3c81f8",
+        "type": "function",
+        "z": "6bfaf373.16399c",
+        "g": "6381d85f68f6d705",
+        "name": "リクエスト構築",
+        "func": "const to = msg.payload[0].from;\nconst uuid = msg.payload[0].uuid;\nconst hostname = env.get('HTTP_HOSTNAME');\nconst apikey = env.get('API_KEY');\nconst payload = `{\n    \"personalizations\":[\n        {\n            \"to\":[\n                {\n                    \"email\":\"${to}\"\n                }\n            ],\n            \"subject\": \"Hello, Node-red!\"\n        }\n    ],\n    \"from\": {\n        \"email\": \"hoge@ason.sgncsfn9.aodaruma.com\"\n    },\n    \"content\":[\n        {\n            \"type\":\"text/plain\",\n            \"value\":\"https://${hostname}/signup?uuid=${uuid}\"\n        }\n    ]\n}`;\nmsg.payload = JSON.parse(payload);\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Authorization'] = `Bearer ${apikey}`;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1120,
+        "y": 460,
+        "wires": [
+            [
+                "d8f6cc0d.20137",
+                "2b5bb078.27eb"
+            ]
+        ]
+    },
+    {
+        "id": "a2bb5d537c79b9f2",
+        "type": "http in",
+        "z": "6bfaf373.16399c",
+        "g": "5d1cc0b04e07366a",
+        "name": "",
+        "url": "/signup",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 370,
+        "y": 760,
+        "wires": [
+            [
+                "0fb882fdf2148f2c"
+            ]
+        ]
+    },
+    {
+        "id": "cb168663ec972ce6",
+        "type": "http response",
+        "z": "6bfaf373.16399c",
+        "g": "5d1cc0b04e07366a",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1050,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "dcaa2b776efc10a5",
+        "type": "mysql",
+        "z": "6bfaf373.16399c",
+        "g": "5d1cc0b04e07366a",
+        "mydb": "a546a402.faa868",
+        "name": "",
+        "x": 695,
+        "y": 760,
+        "wires": [
+            [
+                "edb60d84484b3671"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "0fb882fdf2148f2c",
+        "type": "function",
+        "z": "6bfaf373.16399c",
+        "g": "5d1cc0b04e07366a",
+        "name": "select inbound",
+        "func": "msg.payload = [msg.req.query.uuid];\nmsg.topic = \"select `id`, `from`, BIN_TO_UUID(uuid) as uuid from inbound where `uuid` = UUID_TO_BIN(?);\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 760,
+        "wires": [
+            [
+                "dcaa2b776efc10a5"
+            ]
+        ]
+    },
+    {
+        "id": "c41f98f0f32a26dd",
+        "type": "template",
+        "z": "6bfaf373.16399c",
+        "g": "5d1cc0b04e07366a",
+        "name": "登録フォーム",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"ja\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>ユーザー登録フォーム</title>\n  </head>\n  <body>\n    <h1>ユーザー登録フォーム</h1>\n    <form action=\"/register\" method=\"post\">\n        <div>\n            <span>{{email}}</span>\n        </div>\n        <div>\n            <input type=\"hidden\" name=\"email\" value=\"{{email}}\">\n        </div>\n        <div>\n            <input type=\"hidden\" name=\"uuid\" value=\"{{uuid}}\">\n        </div>\n        <div>\n            <input type=\"text\" name=\"name\">\n        </div>\n        <div>\n            <input type=\"submit\" value=\"送信\">\n        </div>\n    </form>\n  </body>\n</html>",
+        "output": "str",
+        "x": 870,
+        "y": 760,
+        "wires": [
+            [
+                "cb168663ec972ce6",
+                "0961f1f07333e72c"
+            ]
+        ]
+    },
+    {
+        "id": "edb60d84484b3671",
+        "type": "function",
+        "z": "6bfaf373.16399c",
+        "g": "5d1cc0b04e07366a",
+        "name": "",
+        "func": "msg.email = msg.payload[0].from;\nmsg.id = msg.payload[0].id;\nmsg.uuid = msg.payload[0].uuid;\nmsg.statusCode = 200;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 755,
+        "y": 760,
+        "wires": [
+            [
+                "c41f98f0f32a26dd"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "e394cdcc73ec3c99",
+        "type": "http in",
+        "z": "6bfaf373.16399c",
+        "g": "5bcea05917cca0f6",
+        "name": "",
+        "url": "/register",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 330,
+        "y": 1000,
+        "wires": [
+            [
+                "6f63b91cda70586f"
+            ]
+        ]
+    },
+    {
+        "id": "0a0f44f6db37a482",
+        "type": "http response",
+        "z": "6bfaf373.16399c",
+        "g": "5bcea05917cca0f6",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1210,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "1b30d690a99b8177",
+        "type": "inject",
+        "z": "6bfaf373.16399c",
+        "g": "5d1cc0b04e07366a",
+        "name": "クエリストリング付URLアクセス",
+        "props": [
+            {
+                "p": "req",
+                "v": "{\"query\":{\"uuid\":\"494a0f7b-0cca-11ec-a24b-0242ac120002\",\"utm_content\":\"d\",\"utm_source\":\"a\",\"utm_medium\":\"b\",\"utm_campaign\":\"e\",\"utm_term\":\"c\"}}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 310,
+        "y": 700,
+        "wires": [
+            [
+                "0fb882fdf2148f2c"
+            ]
+        ],
+        "outputLabels": [
+            "req: {\"query\":{\"uuid\":\"value\",\"utm_content\":\"d\",\"utm_source\":\"a\",\"utm_medium\":\"b\",\"utm_campaign\":\"e\",\"utm_term\":\"c\"}}"
+        ]
+    },
+    {
+        "id": "0961f1f07333e72c",
+        "type": "debug",
+        "z": "6bfaf373.16399c",
+        "g": "5d1cc0b04e07366a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1050,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "6f63b91cda70586f",
+        "type": "function",
+        "z": "6bfaf373.16399c",
+        "g": "5bcea05917cca0f6",
+        "name": "insert user & delete inbound",
+        "func": "msg.payload = [\n    msg.payload.name, \n    msg.payload.email, \n    msg.payload.uuid\n];\nmsg.topic = `\nSTART TRANSACTION;\nINSERT INTO \\`user\\` (\\`name\\`, \\`email\\`) VALUES (?, ?);\nDELETE FROM \\`inbound\\` where \\`uuid\\` = UUID_TO_BIN(?);\nCOMMIT;\n`;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 1000,
+        "wires": [
+            [
+                "38932a79cf96481e"
+            ]
+        ]
+    },
+    {
+        "id": "38932a79cf96481e",
+        "type": "mysql",
+        "z": "6bfaf373.16399c",
+        "g": "5bcea05917cca0f6",
+        "mydb": "a546a402.faa868",
+        "name": "",
+        "x": 735,
+        "y": 1000,
+        "wires": [
+            [
+                "521bf61e140b42aa"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "59f0a69d09643cb4",
+        "type": "inject",
+        "z": "6bfaf373.16399c",
+        "g": "5bcea05917cca0f6",
+        "name": "登録フォームサブミット",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"email\":\"hoge@example.com\",\"uuid\":\"39ed1831-0eb0-11ec-a24b-0242ac120002\",\"name\":\"ごろう\"}",
+        "payloadType": "json",
+        "x": 290,
+        "y": 940,
+        "wires": [
+            [
+                "6f63b91cda70586f"
+            ]
+        ]
+    },
+    {
+        "id": "9f044baff6db09ad",
+        "type": "inject",
+        "z": "6bfaf373.16399c",
+        "g": "6381d85f68f6d705",
+        "name": "From: hoge@example.com",
+        "props": [
+            {
+                "p": "payload.from",
+                "v": "hoge@example.com",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 390,
+        "y": 340,
+        "wires": [
+            [
+                "58a3b69c.b29a08"
+            ]
+        ]
+    },
+    {
+        "id": "ed710fcb40f71eaf",
+        "type": "catch",
+        "z": "6bfaf373.16399c",
+        "g": "5bcea05917cca0f6",
+        "name": "",
+        "scope": [
+            "38932a79cf96481e"
+        ],
+        "uncaught": false,
+        "x": 470,
+        "y": 1060,
+        "wires": [
+            [
+                "a6ccf81b47783af3"
+            ]
+        ]
+    },
+    {
+        "id": "311aa6b81d02035b",
+        "type": "template",
+        "z": "6bfaf373.16399c",
+        "g": "5bcea05917cca0f6",
+        "name": "ユーザー登録失敗",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"ja\">\n  <head>\n    <meta charset=\"UTF-8\">\n  </head>\n  <body>\n    <h1>ユーザー登録に失敗しました</h1>\n    <span>既に登録済みの可能性があります。</span>\n  </body>\n</html>",
+        "output": "str",
+        "x": 990,
+        "y": 1040,
+        "wires": [
+            [
+                "0a0f44f6db37a482",
+                "9b69cc91517745cd"
+            ]
+        ]
+    },
+    {
+        "id": "207627fa4e918789",
+        "type": "function",
+        "z": "6bfaf373.16399c",
+        "g": "6381d85f68f6d705",
+        "name": "select inbound",
+        "func": "// 前のステップでinsertしたレコードのIDを取得してselectのパラメータとして利用\nmsg.payload = [msg.payload.insertId];\nmsg.topic = \"select `from`, BIN_TO_UUID(uuid) as `uuid` from inbound where `id` = ?;\";\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 460,
+        "wires": [
+            [
+                "38fb61ed.d4d1ae"
+            ]
+        ]
+    },
+    {
+        "id": "0f6527ed42f4a63d",
+        "type": "catch",
+        "z": "6bfaf373.16399c",
+        "g": "6381d85f68f6d705",
+        "name": "",
+        "scope": [
+            "4c8e8cec.d27ac4",
+            "1cc367f1.3e3268",
+            "58a3b69c.b29a08"
+        ],
+        "uncaught": false,
+        "x": 550,
+        "y": 520,
+        "wires": [
+            [
+                "6e25b7164710882c"
+            ]
+        ]
+    },
+    {
+        "id": "6e25b7164710882c",
+        "type": "function",
+        "z": "6bfaf373.16399c",
+        "g": "6381d85f68f6d705",
+        "name": "エラー",
+        "func": "msg.statusCode = 500;\nmsg.payload = error.message;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 520,
+        "wires": [
+            [
+                "89d8c783.818e88",
+                "9d3074bab66cb64a"
+            ]
+        ]
+    },
+    {
+        "id": "9d3074bab66cb64a",
+        "type": "debug",
+        "z": "6bfaf373.16399c",
+        "g": "6381d85f68f6d705",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "59c0e80468f8af74",
+        "type": "catch",
+        "z": "6bfaf373.16399c",
+        "g": "5d1cc0b04e07366a",
+        "name": "",
+        "scope": [
+            "a2bb5d537c79b9f2",
+            "dcaa2b776efc10a5",
+            "0fb882fdf2148f2c",
+            "c41f98f0f32a26dd",
+            "edb60d84484b3671"
+        ],
+        "uncaught": false,
+        "x": 670,
+        "y": 820,
+        "wires": [
+            [
+                "fd2ad3a1304b4acf"
+            ]
+        ]
+    },
+    {
+        "id": "fd2ad3a1304b4acf",
+        "type": "template",
+        "z": "6bfaf373.16399c",
+        "g": "5d1cc0b04e07366a",
+        "name": "サインアップ不可",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"ja\">\n  <head>\n    <meta charset=\"UTF-8\">\n  </head>\n  <body>\n    <h1>サインアップが開始できません</h1>\n    <span>既に登録済みの可能性があります。</span>\n  </body>\n</html>",
+        "output": "str",
+        "x": 850,
+        "y": 820,
+        "wires": [
+            [
+                "cb168663ec972ce6",
+                "0961f1f07333e72c"
+            ]
+        ]
+    },
+    {
+        "id": "3248ce0e11703cc5",
+        "type": "inject",
+        "z": "ee04679c.10bbc8",
+        "name": "トリガ",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "185435f328d18d71"
+            ]
+        ]
+    },
+    {
+        "id": "33d39a170d52d263",
+        "type": "mysql",
+        "z": "ee04679c.10bbc8",
+        "mydb": "a546a402.faa868",
+        "name": "",
+        "x": 495,
+        "y": 120,
+        "wires": [
+            [
+                "254d02d88d95bb9b"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "254d02d88d95bb9b",
+        "type": "debug",
+        "z": "ee04679c.10bbc8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "185435f328d18d71",
+        "type": "function",
+        "z": "ee04679c.10bbc8",
+        "name": "delete all table",
+        "func": "msg.topic = \"delete from user;delete from inbound;\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 120,
+        "wires": [
+            [
+                "33d39a170d52d263"
+            ]
+        ]
+    },
+    {
+        "id": "33453fdd8423f6e1",
+        "type": "mysql",
+        "z": "ee04679c.10bbc8",
+        "mydb": "a546a402.faa868",
+        "name": "",
+        "x": 495,
+        "y": 220,
+        "wires": [
+            [
+                "b5681b1075ed51ad"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "4edcad8707216ad1",
+        "type": "inject",
+        "z": "ee04679c.10bbc8",
+        "name": "トリガ",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 220,
+        "wires": [
+            [
+                "9421d89abf21afdb",
+                "6956f53a775cf0ef"
+            ]
+        ]
+    },
+    {
+        "id": "9421d89abf21afdb",
+        "type": "function",
+        "z": "ee04679c.10bbc8",
+        "name": "select inbound",
+        "func": "msg.topic = \"select `id`, `from`, BIN_TO_UUID(uuid) as `uuid` from `inbound`;\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 220,
+        "wires": [
+            [
+                "33453fdd8423f6e1"
+            ]
+        ]
+    },
+    {
+        "id": "b5681b1075ed51ad",
+        "type": "debug",
+        "z": "ee04679c.10bbc8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "249b4ff73555c219",
+        "type": "inject",
+        "z": "ee04679c.10bbc8",
+        "name": "トリガ",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 170,
+        "y": 360,
+        "wires": [
+            [
+                "3e3860a2b20c2c43"
+            ]
+        ]
+    },
+    {
+        "id": "3e3860a2b20c2c43",
+        "type": "function",
+        "z": "ee04679c.10bbc8",
+        "name": "insert inbound",
+        "func": "msg.payload = [\"hoge@example.com\"];\nmsg.topic = \"insert into inbound (`from`, `uuid`) values (?, UUID_TO_BIN(UUID()));\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 360,
+        "wires": [
+            [
+                "0a16e2b8f5d24b15"
+            ]
+        ]
+    },
+    {
+        "id": "0a16e2b8f5d24b15",
+        "type": "mysql",
+        "z": "ee04679c.10bbc8",
+        "mydb": "a546a402.faa868",
+        "name": "",
+        "x": 495,
+        "y": 360,
+        "wires": [
+            [
+                "2ea4e15b6f1d6cbf"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "2ea4e15b6f1d6cbf",
+        "type": "debug",
+        "z": "ee04679c.10bbc8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "6956f53a775cf0ef",
+        "type": "function",
+        "z": "ee04679c.10bbc8",
+        "name": "select user",
+        "func": "msg.topic = \"select * from `user`;\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 260,
+        "wires": [
+            [
+                "33453fdd8423f6e1"
+            ]
+        ]
+    },
+    {
+        "id": "a6ccf81b47783af3",
+        "type": "function",
+        "z": "6bfaf373.16399c",
+        "g": "5bcea05917cca0f6",
+        "name": "rollback",
+        "func": "msg.topic = \"ROLLBACK;\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 1060,
+        "wires": [
+            [
+                "38932a79cf96481e"
+            ]
+        ]
+    },
+    {
+        "id": "9b69cc91517745cd",
+        "type": "debug",
+        "z": "6bfaf373.16399c",
+        "g": "5bcea05917cca0f6",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1210,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "3bd090c9a6ed1bc8",
+        "type": "template",
+        "z": "6bfaf373.16399c",
+        "g": "5bcea05917cca0f6",
+        "name": "ユーザー登録完了",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"ja\">\n  <head>\n    <meta charset=\"UTF-8\">\n  </head>\n  <body>\n    <h1>ユーザー登録完了しました</h1>\n  </body>\n</html>",
+        "output": "str",
+        "x": 990,
+        "y": 960,
+        "wires": [
+            [
+                "0a0f44f6db37a482",
+                "9b69cc91517745cd"
+            ]
+        ]
+    },
+    {
+        "id": "521bf61e140b42aa",
+        "type": "switch",
+        "z": "6bfaf373.16399c",
+        "g": "5bcea05917cca0f6",
+        "name": "",
+        "property": "error",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "null"
+            },
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 830,
+        "y": 1000,
+        "wires": [
+            [
+                "3bd090c9a6ed1bc8"
+            ],
+            [
+                "311aa6b81d02035b"
+            ]
+        ],
+        "outputLabels": [
+            "success",
+            "fail"
+        ]
+    },
+    {
+        "id": "a9bbb0bd3fbdf5ce",
+        "type": "comment",
+        "z": "ee04679c.10bbc8",
+        "name": "各テーブルからレコード削除",
+        "info": "",
+        "x": 200,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "8e6f49047bd729e3",
+        "type": "comment",
+        "z": "ee04679c.10bbc8",
+        "name": "各テーブルのレコード確認",
+        "info": "",
+        "x": 190,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "838872f672b41094",
+        "type": "comment",
+        "z": "ee04679c.10bbc8",
+        "name": "inboundテーブルにレコード挿入",
+        "info": "",
+        "x": 210,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "9659daecdfce3e53",
+        "type": "debug",
+        "z": "6bfaf373.16399c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 1180,
+        "wires": []
+    }
+]
