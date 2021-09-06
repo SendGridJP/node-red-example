@@ -280,7 +280,7 @@
         "z": "6bfaf373.16399c",
         "g": "6381d85f68f6d705",
         "name": "リクエスト構築",
-        "func": "const to = msg.payload[0].from;\nconst uuid = msg.payload[0].uuid;\nconst hostname = env.get('HTTP_HOSTNAME');\nconst apikey = env.get('API_KEY');\nconst payload = `{\n    \"personalizations\":[\n        {\n            \"to\":[\n                {\n                    \"email\":\"${to}\"\n                }\n            ],\n            \"subject\": \"Hello, Node-red!\"\n        }\n    ],\n    \"from\": {\n        \"email\": \"hoge@ason.sgncsfn9.aodaruma.com\"\n    },\n    \"content\":[\n        {\n            \"type\":\"text/plain\",\n            \"value\":\"https://${hostname}/signup?uuid=${uuid}\"\n        }\n    ]\n}`;\nmsg.payload = JSON.parse(payload);\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Authorization'] = `Bearer ${apikey}`;\nreturn msg;",
+        "func": "const to = msg.payload[0].from;\nconst uuid = msg.payload[0].uuid;\nconst hostname = env.get('HTTP_HOSTNAME');\nconst apikey = env.get('API_KEY');\nconst payload = `{\n    \"personalizations\":[\n        {\n            \"to\":[\n                {\n                    \"email\":\"${to}\"\n                }\n            ],\n            \"subject\": \"Hello, Node-red!\"\n        }\n    ],\n    \"from\": {\n        \"email\": \"hoge@ason.sgncsfn9.aodaruma.com\"\n    },\n    \"content\":[\n        {\n            \"type\":\"text/plain\",\n            \"value\":\"ユーザー登録を開始します。\\\\r\\\\n以下のURLにアクセスしてください\\\\r\\\\nhttps://${hostname}/signup?uuid=${uuid}\"\n        }\n    ]\n}`;\nmsg.payload = JSON.parse(payload);\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Authorization'] = `Bearer ${apikey}`;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1098,22 +1098,6 @@
         "info": "",
         "x": 210,
         "y": 320,
-        "wires": []
-    },
-    {
-        "id": "9659daecdfce3e53",
-        "type": "debug",
-        "z": "6bfaf373.16399c",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 400,
-        "y": 1180,
         "wires": []
     }
 ]
