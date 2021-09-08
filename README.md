@@ -199,6 +199,8 @@ mysql_1  | 2021-09-08T08:24:40.537761Z 0 [System] [MY-011323] [Server] X Plugin 
 mysql_1  | 2021-09-08T08:24:40.538093Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.26'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
 ```
 
+MySQLが起動したら環境構築は完了です。
+
 # 動作確認
 
 ## 空メール送信
