@@ -22,28 +22,28 @@ MacOSおよびAmazon Linux上で動作確認しています。各ツールのイ
 
 ## 手順
 ### ngrokの起動
-まずはじめに、Inbound Parse Webhookを受信するためにngrokを起動します。
+まずはじめに、Inbound Parse Webhookを受信するためにngrokを起動します。1880はNode-REDの待ち受けポート番号です。
 
 ```
 $ ngrok http 1880
 ```
 
-起動すると自動的にホスト名が付与されるのでメモしておきます。後でいくつかの場所に設定していきます。
+起動すると自動的にホスト名が付与されるのでメモしておきます。このホスト名は後でいくつかの場所に設定していきます。
 
 ![](docs/images/ngrok1.png)
 
 ### Inbound Parse Webhookの設定
-[ドキュメントの手順](https://sendgrid.kke.co.jp/docs/Tutorials/E_Receive_Mail/receive_mail.html)に従ってInbound Parse Webhookの設定を追加します。注意点は以下の通りです。
+[ドキュメントの手順](https://sendgrid.kke.co.jp/docs/Tutorials/E_Receive_Mail/receive_mail.html)に従ってInbound Parse Webhookを設定します。ポイントは以下のとおりです。
 
 - **Receiving Domain**
     - メールの宛先ドメイン
 - **Destination URL**
-    - 「https://＋ngrokの待受ホスト名＋/inbound」のフォーマットで指定します
+    - 「https://＋ngrokの待受ホスト名＋/inbound 」のフォーマットで指定します
     - 例：https://5eae-101-110-33-89.ngrok.io/inbound
 - **Additional Option**
     - チェックはすべてOFFにします
 
-![](docs/images/inbound-parse1.png)
+<img src="docs/images/inbound-parse1.png" width="50%">
 
 ### APIキーの作成
 [ドキュメントの手順](https://sendgrid.kke.co.jp/docs/Tutorials/A_Transaction_Mail/manage_api_key.html)に沿ってAPIキーを作成します。必要なパーミッションは「**Mail Send**」の「**Full Access**」です。
@@ -55,14 +55,14 @@ $ ngrok http 1880
 ![](docs/images/apikey2.png)
 
 ### 環境変数の登録
-以下の環境変数を登録します。
+環境変数に以下のキーと値を登録します。
 
 |  キー  |  値  |
 | ---- | ---- |
 |  HTTP_HOSTNAME  |  ngrokのホスト名<br>例：5eae-101-110-33-89.ngrok.io  |
 |  API_KEY  |  SendGridのAPIキー<br>例：SG.xxxxxxxxxxxxx.xxxxxxxxxxxxxx  |
 
-以下は「**~/.bash_profile**」に登録した例です。設定したファイルの内容を読み込んでおきます。
+以下は「**~/.bash_profile**」に登録する例です。`source`コマンドで設定したファイルの内容を読み込んでおきます。
 
 ```
 $ less ~/.bash_profile
@@ -74,7 +74,7 @@ $ source ~/.bash_profile
 ```
 
 ### Node-REDの起動
-Node-REDを起動します。ポート番号1880で待ち受け開始することを確認します。
+Node-REDを起動します。ポート番号1880で待ち受け開始したことを確認します。
 
 ```
 $ cd ~/.node-red
@@ -92,8 +92,7 @@ Node-REDの**settings.js**ファイルを編集します。
 $ vi ~/.node-red/settings.js
 ```
 
-「**editorTheme > projects > enabled**」の値を「**true**」に変更してプロジェクト機能を有効化します。
-※[参考ドキュメント](https://nodered.jp/docs/user-guide/projects/#%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E6%9C%89%E5%8A%B9%E5%8C%96%E3%81%99%E3%82%8B)
+「**editorTheme > projects > enabled**」の値を「**true**」に変更して[プロジェクト機能を有効化](https://nodered.jp/docs/user-guide/projects/#%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E6%9C%89%E5%8A%B9%E5%8C%96%E3%81%99%E3%82%8B)します。
 
 ```
   editorTheme: {
@@ -117,7 +116,7 @@ $ node-red
 ```
 
 ### プロジェクトの初期設定
-ブラウザから「http://http://localhost:1880/」にアクセスしてNode-REDのフローエディタを表示します。プロジェクトの初期設定画面が表示されるので「**Clone Repository**」を選択します。
+ブラウザから「http://http://localhost:1880/ 」にアクセスしてNode-REDのフローエディタを表示します。プロジェクトの初期設定画面が表示されるので「**Clone Repository**」を選択します。
 
 ![](docs/images/node-red2.png)
 
@@ -130,11 +129,11 @@ GitHubの「**Username**」と「**Email**」を設定して「**Next**」を選
 - **Project name**
     - node-red-example
 - **Git repository URL**
-    https://github.com/SendGridJP/node-red-example
+    - https://github.com/SendGridJP/node-red-example
 
 ![](docs/images/node-red4.png)
 
-いくつかのノードタイプがない旨エラーメッセージは「**Close**」を選択して閉じます。
+いくつかのノードタイプがない旨エラーメッセージが表示されますが、ここではひとまず「**Close**」を選択して閉じます。
 
 ![](docs/images/node-red5.png)
 
@@ -169,11 +168,11 @@ Node-REDの画面上で「**debug**」ボタンを選択すると、デバッグ
 
 ![](docs/images/node-red9.png)
 
-しばらく待つと、ユーザー登録用メールが自動的に返ってくるので、メール本文内のURLにアクセスします。
+しばらく待つとユーザー登録用メールが届くので、メール本文内のURLにアクセスします。
 
 ![](docs/images/mail2.png)
 
-ブラウザ内にユーザー登録フォームが表示されるので、適当な名前を入力して「**送信**」を選択します。
+ブラウザ上にユーザー登録フォームが表示されるので、適当なニックネームを入力して「**送信**」を選択します。
 
 ![](docs/images/form1.png)
 
@@ -181,13 +180,15 @@ Node-REDの画面上で「**debug**」ボタンを選択すると、デバッグ
 
 ![](docs/images/form2.png)
 
-一方、既に同じメールアドレスが登録済みなど、登録に失敗した場合以下のようなメッセージが表示されます。
+一方、既に同じメールアドレスが登録済みなど、登録に失敗した場合は以下のようなメッセージが表示されます。
 
 ![](docs/images/form3.png)
 ![](docs/images/form4.png)
 
+以上で動作確認完了です。
+
 # 注意点
-このサンプルを利用する場合の注意点は以下の通りです。
+このサンプルを利用する際の注意点は以下の通りです。
 
 - データベースのパスワードはdocker-compose.ymlに直書きしてあるので、環境変数から読み込むようにするなど、パスワードが晒されないようにしてください
 - ノードのプロパティに保存する認証情報を暗号化する場合は、Node-REDのセキュアパラメータ暗号化機能を有効化してください
