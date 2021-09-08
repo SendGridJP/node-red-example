@@ -163,10 +163,41 @@ GitHubの「**Username**」と「**Email**」を設定して「**Next**」を選
 |<img src="docs/images/node-red8.png" width="75%">|
 |:-|
 
-一度ブラウザの画面をリロードして環境構築が完了です。
+一度ブラウザの画面をリロードします。
 
 |![](docs/images/node-red1.png)|
 |:-|
+
+以下のコマンドでMySQL環境を構築します。
+
+```
+$ cd ~/.node-red/projects/node-red-example/
+$ docker-compose up -d --force-recreate --build
+Building mysql
+Step 1/4 : FROM mysql
+ ---> 0716d6ebcc1a
+Step 2/4 : EXPOSE 3306
+ ---> Using cache
+ ---> ac70f8c41da4
+Step 3/4 : ADD ./my.cnf /etc/mysql/conf.d/my.cnf
+ ---> Using cache
+ ---> dc43457ed364
+Step 4/4 : CMD ["mysqld"]
+ ---> Using cache
+ ---> ef69d0e239e3
+Successfully built ef69d0e239e3
+Successfully tagged mysql:inbound
+Recreating noderedexample_mysql_1 ... done
+```
+
+MySQL環境構築のために1分ほど待ってから、以下のコマンドでMySQLが起動していることを確認します。
+
+```
+$ docker-compose logs
+〜〜省略〜〜
+mysql_1  | 2021-09-08T08:24:40.537761Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+mysql_1  | 2021-09-08T08:24:40.538093Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.26'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+```
 
 # 動作確認
 
