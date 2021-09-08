@@ -30,7 +30,7 @@ $ ngrok http 1880
 
 起動すると自動的にホスト名が付与されるのでメモしておきます。このホスト名は後でいくつかの場所に設定していきます。
 
-![](docs/images/ngrok1.png)
+<img src="docs/images/ngrok1.png" width="75%">
 
 ### Inbound Parse Webhookの設定
 [ドキュメントの手順](https://sendgrid.kke.co.jp/docs/Tutorials/E_Receive_Mail/receive_mail.html)に従ってInbound Parse Webhookを設定します。ポイントは以下のとおりです。
@@ -48,11 +48,11 @@ $ ngrok http 1880
 ### APIキーの作成
 [ドキュメントの手順](https://sendgrid.kke.co.jp/docs/Tutorials/A_Transaction_Mail/manage_api_key.html)に沿ってAPIキーを作成します。必要なパーミッションは「**Mail Send**」の「**Full Access**」です。
 
-![](docs/images/apikey1.png)
+<img src="docs/images/apikey1.png" width="50%">
 
 作成したAPIキーは、次の手順で使用するためクリップボードにコピーしておきます。
 
-![](docs/images/apikey2.png)
+<img src="docs/images/apikey2.png" width="50%">
 
 ### 環境変数の登録
 環境変数に以下のキーと値を登録します。
@@ -122,7 +122,7 @@ $ node-red
 
 GitHubの「**Username**」と「**Email**」を設定して「**Next**」を選択します。
 
-![](docs/images/node-red3.png)
+<img src="docs/images/node-red3.png" width="50%">
 
 以下のように設定して「**Clone project**」を選択します。
 
@@ -131,7 +131,7 @@ GitHubの「**Username**」と「**Email**」を設定して「**Next**」を選
 - **Git repository URL**
     - https://github.com/SendGridJP/node-red-example
 
-![](docs/images/node-red4.png)
+<img src="docs/images/node-red4.png" width="50%">
 
 いくつかのノードタイプがない旨エラーメッセージが表示されますが、ここではひとまず「**Close**」を選択して閉じます。
 
@@ -139,15 +139,15 @@ GitHubの「**Username**」と「**Email**」を設定して「**Next**」を選
 
 画面右上のメニューから「**Projects > Project Settings**」を選択します。
 
-![](docs/images/node-red6.png)
+<img src="docs/images/node-red6.png" width="50%">
 
 「**Dependencies**」を選択して、それぞれの依存関係をインストールします。
 
-![](docs/images/node-red7.png)
+<img src="docs/images/node-red7.png" width="50%">
 
 「**Close**」を選択して設定画面を閉じます。
 
-![](docs/images/node-red8.png)
+<img src="docs/images/node-red8.png" width="50%">
 
 一度ブラウザの画面をリロードして環境構築が完了です。
 
@@ -158,32 +158,32 @@ GitHubの「**Username**」と「**Email**」を設定して「**Next**」を選
 ## 空メール送信
 Inbound Parse Webhookで設定した受信ドメイン宛に空メールを送ります。ローカルパートは適当な文字列を指定します。
 
-![](docs/images/mail1.png)
+<img src="docs/images/mail1.png" width="50%">
 
 ngrokがInbound Parse Webhookを受信すると「**200 OK**」が表示されます。
 
-![](docs/images/ngrok2.png)
+<img src="docs/images/ngrok2.png" width="75%">
 
 Node-REDの画面上で「**debug**」ボタンを選択すると、デバッグログが確認できます。この中に「**statusCode: 202**」の表示があれば、SendGridに対するメール送信リクエストが成功しています。
 
-![](docs/images/node-red9.png)
+<img src="docs/images/node-red9.png" width="30%">
 
 しばらく待つとユーザー登録用メールが届くので、メール本文内のURLにアクセスします。
 
-![](docs/images/mail2.png)
+<img src="docs/images/mail2.png" width="50%">
 
 ブラウザ上にユーザー登録フォームが表示されるので、適当なニックネームを入力して「**送信**」を選択します。
 
-![](docs/images/form1.png)
+<img src="docs/images/form1.png" width="30%">
 
 登録に成功すると以下のようなメッセージが表示されます。
 
-![](docs/images/form2.png)
+<img src="docs/images/form2.png" width="30%">
 
 一方、既に同じメールアドレスが登録済みなど、登録に失敗した場合は以下のようなメッセージが表示されます。
 
-![](docs/images/form3.png)
-![](docs/images/form4.png)
+<img src="docs/images/form3.png" width="30%"><br>
+<img src="docs/images/form4.png" width="30%">
 
 以上で動作確認完了です。
 
