@@ -2,7 +2,7 @@
     {
         "id": "6bfaf373.16399c",
         "type": "tab",
-        "label": "フロー",
+        "label": "参考",
         "disabled": false,
         "info": ""
     },
@@ -31,10 +31,12 @@
             "cb168663ec972ce6",
             "0961f1f07333e72c",
             "59c0e80468f8af74",
-            "fd2ad3a1304b4acf"
+            "fd2ad3a1304b4acf",
+            "7d1f9165ecb11e5f",
+            "bff29fc4e5d2eff4"
         ],
-        "x": 134,
-        "y": 659,
+        "x": 54,
+        "y": 419,
         "w": 1012,
         "h": 202
     },
@@ -57,11 +59,13 @@
             "a6ccf81b47783af3",
             "9b69cc91517745cd",
             "3bd090c9a6ed1bc8",
-            "521bf61e140b42aa"
+            "521bf61e140b42aa",
+            "529ed0910a41b60b",
+            "a4c4116e57fd0af0"
         ],
-        "x": 134,
-        "y": 899,
-        "w": 1172,
+        "x": 54,
+        "y": 659,
+        "w": 1192,
         "h": 202
     },
     {
@@ -87,10 +91,12 @@
             "9f044baff6db09ad",
             "0f6527ed42f4a63d",
             "6e25b7164710882c",
-            "9d3074bab66cb64a"
+            "9d3074bab66cb64a",
+            "91e30b857f420a94",
+            "4721b87e41c56dd3"
         ],
-        "x": 134,
-        "y": 299,
+        "x": 54,
+        "y": 59,
         "w": 1272,
         "h": 322
     },
@@ -114,8 +120,8 @@
         "method": "post",
         "fields": "[{\"name\": \"attachment-info\"}]",
         "swaggerDoc": "",
-        "x": 420,
-        "y": 460,
+        "x": 340,
+        "y": 220,
         "wires": [
             [
                 "58a3b69c.b29a08"
@@ -130,8 +136,8 @@
         "name": "Inbound Parseに対するレスポンス",
         "statusCode": "",
         "headers": {},
-        "x": 940,
-        "y": 520,
+        "x": 860,
+        "y": 280,
         "wires": []
     },
     {
@@ -141,8 +147,8 @@
         "g": "6381d85f68f6d705",
         "mydb": "a546a402.faa868",
         "name": "",
-        "x": 755,
-        "y": 460,
+        "x": 675,
+        "y": 220,
         "wires": [
             [
                 "89d8c783.818e88",
@@ -165,8 +171,8 @@
         "persist": false,
         "proxy": "",
         "authType": "bearer",
-        "x": 1310,
-        "y": 460,
+        "x": 1230,
+        "y": 220,
         "wires": [
             [
                 "de6b3e8f.7c80c"
@@ -187,8 +193,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1290,
-        "y": 520,
+        "x": 1210,
+        "y": 280,
         "wires": []
     },
     {
@@ -198,8 +204,8 @@
         "g": "6381d85f68f6d705",
         "mydb": "a546a402.faa868",
         "name": "",
-        "x": 995,
-        "y": 460,
+        "x": 915,
+        "y": 220,
         "wires": [
             [
                 "345d675f.3c81f8"
@@ -222,8 +228,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 640,
-        "y": 460,
+        "x": 560,
+        "y": 220,
         "wires": [
             [
                 "1cc367f1.3e3268"
@@ -248,8 +254,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 340,
-        "y": 400,
+        "x": 260,
+        "y": 160,
         "wires": [
             [
                 "58a3b69c.b29a08"
@@ -262,7 +268,7 @@
         "z": "6bfaf373.16399c",
         "g": "6381d85f68f6d705",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -270,8 +276,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1290,
-        "y": 400,
+        "x": 1210,
+        "y": 160,
         "wires": []
     },
     {
@@ -286,8 +292,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1120,
-        "y": 460,
+        "x": 1040,
+        "y": 220,
         "wires": [
             [
                 "d8f6cc0d.20137",
@@ -305,8 +311,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 370,
-        "y": 760,
+        "x": 290,
+        "y": 520,
         "wires": [
             [
                 "0fb882fdf2148f2c"
@@ -321,8 +327,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1050,
-        "y": 760,
+        "x": 970,
+        "y": 520,
         "wires": []
     },
     {
@@ -332,8 +338,8 @@
         "g": "5d1cc0b04e07366a",
         "mydb": "a546a402.faa868",
         "name": "",
-        "x": 695,
-        "y": 760,
+        "x": 615,
+        "y": 520,
         "wires": [
             [
                 "edb60d84484b3671"
@@ -353,8 +359,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 560,
-        "y": 760,
+        "x": 480,
+        "y": 520,
         "wires": [
             [
                 "dcaa2b776efc10a5"
@@ -373,8 +379,8 @@
         "syntax": "mustache",
         "template": "<!DOCTYPE html>\n<html lang=\"ja\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>ユーザー登録フォーム</title>\n  </head>\n  <body>\n    <h1>ユーザー登録フォーム</h1>\n    <form action=\"/register\" method=\"post\">\n        <div>\n            <span>{{email}}</span>\n        </div>\n        <div>\n            <input type=\"hidden\" name=\"email\" value=\"{{email}}\">\n        </div>\n        <div>\n            <input type=\"hidden\" name=\"uuid\" value=\"{{uuid}}\">\n        </div>\n        <div>\n            <input type=\"text\" name=\"name\">\n        </div>\n        <div>\n            <input type=\"submit\" value=\"送信\">\n        </div>\n    </form>\n  </body>\n</html>",
         "output": "str",
-        "x": 870,
-        "y": 760,
+        "x": 790,
+        "y": 520,
         "wires": [
             [
                 "cb168663ec972ce6",
@@ -394,8 +400,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 755,
-        "y": 760,
+        "x": 675,
+        "y": 520,
         "wires": [
             [
                 "c41f98f0f32a26dd"
@@ -413,8 +419,8 @@
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 330,
-        "y": 1000,
+        "x": 270,
+        "y": 760,
         "wires": [
             [
                 "6f63b91cda70586f"
@@ -429,8 +435,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1210,
-        "y": 960,
+        "x": 1150,
+        "y": 720,
         "wires": []
     },
     {
@@ -451,8 +457,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 310,
-        "y": 700,
+        "x": 230,
+        "y": 460,
         "wires": [
             [
                 "0fb882fdf2148f2c"
@@ -476,8 +482,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1050,
-        "y": 820,
+        "x": 970,
+        "y": 580,
         "wires": []
     },
     {
@@ -492,8 +498,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 560,
-        "y": 1000,
+        "x": 500,
+        "y": 760,
         "wires": [
             [
                 "38932a79cf96481e"
@@ -507,8 +513,8 @@
         "g": "5bcea05917cca0f6",
         "mydb": "a546a402.faa868",
         "name": "",
-        "x": 735,
-        "y": 1000,
+        "x": 675,
+        "y": 760,
         "wires": [
             [
                 "521bf61e140b42aa"
@@ -534,8 +540,8 @@
         "topic": "",
         "payload": "{\"email\":\"hoge@example.com\",\"uuid\":\"39ed1831-0eb0-11ec-a24b-0242ac120002\",\"name\":\"ごろう\"}",
         "payloadType": "json",
-        "x": 290,
-        "y": 940,
+        "x": 230,
+        "y": 700,
         "wires": [
             [
                 "6f63b91cda70586f"
@@ -560,8 +566,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 390,
-        "y": 340,
+        "x": 310,
+        "y": 100,
         "wires": [
             [
                 "58a3b69c.b29a08"
@@ -578,8 +584,8 @@
             "38932a79cf96481e"
         ],
         "uncaught": false,
-        "x": 470,
-        "y": 1060,
+        "x": 410,
+        "y": 820,
         "wires": [
             [
                 "a6ccf81b47783af3"
@@ -598,8 +604,8 @@
         "syntax": "mustache",
         "template": "<!DOCTYPE html>\n<html lang=\"ja\">\n  <head>\n    <meta charset=\"UTF-8\">\n  </head>\n  <body>\n    <h1>ユーザー登録に失敗しました</h1>\n    <span>既に登録済みの可能性があります。</span>\n  </body>\n</html>",
         "output": "str",
-        "x": 990,
-        "y": 1040,
+        "x": 930,
+        "y": 800,
         "wires": [
             [
                 "0a0f44f6db37a482",
@@ -619,8 +625,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 880,
-        "y": 460,
+        "x": 800,
+        "y": 220,
         "wires": [
             [
                 "38fb61ed.d4d1ae"
@@ -639,8 +645,8 @@
             "58a3b69c.b29a08"
         ],
         "uncaught": false,
-        "x": 550,
-        "y": 520,
+        "x": 470,
+        "y": 280,
         "wires": [
             [
                 "6e25b7164710882c"
@@ -659,8 +665,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 690,
-        "y": 520,
+        "x": 610,
+        "y": 280,
         "wires": [
             [
                 "89d8c783.818e88",
@@ -682,8 +688,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 850,
-        "y": 580,
+        "x": 770,
+        "y": 340,
         "wires": []
     },
     {
@@ -700,8 +706,8 @@
             "edb60d84484b3671"
         ],
         "uncaught": false,
-        "x": 670,
-        "y": 820,
+        "x": 590,
+        "y": 580,
         "wires": [
             [
                 "fd2ad3a1304b4acf"
@@ -720,8 +726,8 @@
         "syntax": "mustache",
         "template": "<!DOCTYPE html>\n<html lang=\"ja\">\n  <head>\n    <meta charset=\"UTF-8\">\n  </head>\n  <body>\n    <h1>サインアップが開始できません</h1>\n    <span>既に登録済みの可能性があります。</span>\n  </body>\n</html>",
         "output": "str",
-        "x": 850,
-        "y": 820,
+        "x": 770,
+        "y": 580,
         "wires": [
             [
                 "cb168663ec972ce6",
@@ -989,8 +995,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 620,
-        "y": 1060,
+        "x": 560,
+        "y": 820,
         "wires": [
             [
                 "38932a79cf96481e"
@@ -1011,8 +1017,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1210,
-        "y": 1040,
+        "x": 1150,
+        "y": 800,
         "wires": []
     },
     {
@@ -1027,8 +1033,8 @@
         "syntax": "mustache",
         "template": "<!DOCTYPE html>\n<html lang=\"ja\">\n  <head>\n    <meta charset=\"UTF-8\">\n  </head>\n  <body>\n    <h1>ユーザー登録完了しました</h1>\n  </body>\n</html>",
         "output": "str",
-        "x": 990,
-        "y": 960,
+        "x": 930,
+        "y": 720,
         "wires": [
             [
                 "0a0f44f6db37a482",
@@ -1055,8 +1061,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 830,
-        "y": 1000,
+        "x": 770,
+        "y": 760,
         "wires": [
             [
                 "3bd090c9a6ed1bc8"
@@ -1098,6 +1104,72 @@
         "info": "",
         "x": 210,
         "y": 320,
+        "wires": []
+    },
+    {
+        "id": "91e30b857f420a94",
+        "type": "comment",
+        "z": "6bfaf373.16399c",
+        "g": "6381d85f68f6d705",
+        "name": "正常系",
+        "info": "",
+        "x": 190,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "4721b87e41c56dd3",
+        "type": "comment",
+        "z": "6bfaf373.16399c",
+        "g": "6381d85f68f6d705",
+        "name": "異常系",
+        "info": "",
+        "x": 350,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "7d1f9165ecb11e5f",
+        "type": "comment",
+        "z": "6bfaf373.16399c",
+        "g": "5d1cc0b04e07366a",
+        "name": "正常系",
+        "info": "",
+        "x": 150,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "bff29fc4e5d2eff4",
+        "type": "comment",
+        "z": "6bfaf373.16399c",
+        "g": "5d1cc0b04e07366a",
+        "name": "異常系",
+        "info": "",
+        "x": 470,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "529ed0910a41b60b",
+        "type": "comment",
+        "z": "6bfaf373.16399c",
+        "g": "5bcea05917cca0f6",
+        "name": "正常系",
+        "info": "",
+        "x": 130,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "a4c4116e57fd0af0",
+        "type": "comment",
+        "z": "6bfaf373.16399c",
+        "g": "5bcea05917cca0f6",
+        "name": "異常系",
+        "info": "",
+        "x": 290,
+        "y": 820,
         "wires": []
     }
 ]
