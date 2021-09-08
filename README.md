@@ -116,7 +116,7 @@ $ node-red
 ```
 
 ### プロジェクトの初期設定
-ブラウザから「http://http://localhost:1880/ 」にアクセスしてNode-REDのフローエディタを表示します。プロジェクトの初期設定画面が表示されるので「**Clone Repository**」を選択します。
+ブラウザから「http://localhost:1880/ 」にアクセスしてNode-REDのフローエディタを表示します。プロジェクトの初期設定画面が表示されるので「**Clone Repository**」を選択します。
 
 ![](docs/images/node-red2.png)
 
@@ -183,7 +183,7 @@ Node-REDの画面上で「**debug**」ボタンを選択すると、デバッグ
 一方、既に同じメールアドレスが登録済みなど、登録に失敗した場合は以下のようなメッセージが表示されます。
 
 <img src="docs/images/form3.png" width="50%"><br>
-<img src="docs/images/form4.png" width="50%">
+<kdb><img src="docs/images/form4.png" width="50%"></kdb>
 
 以上で動作確認完了です。
 
