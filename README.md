@@ -184,6 +184,7 @@ Node-REDの画面上で「**debug**」ボタンを選択すると、デバッグ
 
 <img src="docs/images/form3.png" width="50%"><br>
 |<img src="docs/images/form4.png" width="50%">|
+|:-|
 
 以上で動作確認完了です。
 
