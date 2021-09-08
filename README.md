@@ -48,11 +48,11 @@ $ ngrok http 1880
 ### APIキーの作成
 [ドキュメントの手順](https://sendgrid.kke.co.jp/docs/Tutorials/A_Transaction_Mail/manage_api_key.html)に沿ってAPIキーを作成します。必要なパーミッションは「**Mail Send**」の「**Full Access**」です。
 
-<img src="docs/images/apikey1.png" width="50%">
+<img src="docs/images/apikey1.png" width="75%">
 
 作成したAPIキーは、次の手順で使用するためクリップボードにコピーしておきます。
 
-<img src="docs/images/apikey2.png" width="50%">
+<img src="docs/images/apikey2.png" width="75%">
 
 ### 環境変数の登録
 環境変数に以下のキーと値を登録します。
@@ -122,7 +122,7 @@ $ node-red
 
 GitHubの「**Username**」と「**Email**」を設定して「**Next**」を選択します。
 
-<img src="docs/images/node-red3.png" width="50%">
+<img src="docs/images/node-red3.png" width="75%">
 
 以下のように設定して「**Clone project**」を選択します。
 
@@ -131,7 +131,7 @@ GitHubの「**Username**」と「**Email**」を設定して「**Next**」を選
 - **Git repository URL**
     - https://github.com/SendGridJP/node-red-example
 
-<img src="docs/images/node-red4.png" width="50%">
+<img src="docs/images/node-red4.png" width="75%">
 
 いくつかのノードタイプがない旨エラーメッセージが表示されますが、ここではひとまず「**Close**」を選択して閉じます。
 
@@ -139,15 +139,15 @@ GitHubの「**Username**」と「**Email**」を設定して「**Next**」を選
 
 画面右上のメニューから「**Projects > Project Settings**」を選択します。
 
-<img src="docs/images/node-red6.png" width="50%">
+<img src="docs/images/node-red6.png" width="75%">
 
 「**Dependencies**」を選択して、それぞれの依存関係をインストールします。
 
-<img src="docs/images/node-red7.png" width="50%">
+<img src="docs/images/node-red7.png" width="75%">
 
 「**Close**」を選択して設定画面を閉じます。
 
-<img src="docs/images/node-red8.png" width="50%">
+<img src="docs/images/node-red8.png" width="75%">
 
 一度ブラウザの画面をリロードして環境構築が完了です。
 
@@ -158,7 +158,7 @@ GitHubの「**Username**」と「**Email**」を設定して「**Next**」を選
 ## 空メール送信
 Inbound Parse Webhookで設定した受信ドメイン宛に空メールを送ります。ローカルパートは適当な文字列を指定します。
 
-<img src="docs/images/mail1.png" width="50%">
+<img src="docs/images/mail1.png" width="75%">
 
 ngrokがInbound Parse Webhookを受信すると「**200 OK**」が表示されます。
 
@@ -166,24 +166,24 @@ ngrokがInbound Parse Webhookを受信すると「**200 OK**」が表示され�
 
 Node-REDの画面上で「**debug**」ボタンを選択すると、デバッグログが確認できます。この中に「**statusCode: 202**」の表示があれば、SendGridに対するメール送信リクエストが成功しています。
 
-<img src="docs/images/node-red9.png" width="30%">
+<img src="docs/images/node-red9.png" width="50%">
 
 しばらく待つとユーザー登録用メールが届くので、メール本文内のURLにアクセスします。
 
-<img src="docs/images/mail2.png" width="50%">
+<img src="docs/images/mail2.png" width="75%">
 
 ブラウザ上にユーザー登録フォームが表示されるので、適当なニックネームを入力して「**送信**」を選択します。
 
-<img src="docs/images/form1.png" width="30%">
+<img src="docs/images/form1.png" width="50%">
 
 登録に成功すると以下のようなメッセージが表示されます。
 
-<img src="docs/images/form2.png" width="30%">
+<img src="docs/images/form2.png" width="50%">
 
 一方、既に同じメールアドレスが登録済みなど、登録に失敗した場合は以下のようなメッセージが表示されます。
 
-<img src="docs/images/form3.png" width="30%"><br>
-<img src="docs/images/form4.png" width="30%">
+<img src="docs/images/form3.png" width="50%"><br>
+<img src="docs/images/form4.png" width="50%">
 
 以上で動作確認完了です。
 
