@@ -17,6 +17,7 @@ SendGridとNode-REDを利用した空メール登録システムのサンプル�
 - [ngrok](https://ngrok.com/)：v2.3.35
 - [Docker Engine](https://www.docker.com/)：v20.10.8
 - [docker-compose](https://docs.docker.jp/compose/toc.html)：v2.0.0-rc.2
+- [SendGridアカウント](https://sendgrid.kke.co.jp/app?p=signup.index)
 
 MacOSおよびAmazon Linux上で動作確認しています。各ツールのインストールを完了させます。
 
