@@ -183,7 +183,8 @@ Node-REDの画面上で「**debug**」ボタンを選択すると、デバッグ
 一方、既に同じメールアドレスが登録済みなど、登録に失敗した場合は以下のようなメッセージが表示されます。
 
 <img src="docs/images/form3.png" width="50%"><br>
-<kdb><img src="docs/images/form4.png" width="50%"></kdb>
+|!<img src="docs/images/form4.png" width="50%">|
+|:-:|
 
 以上で動作確認完了です。
 
